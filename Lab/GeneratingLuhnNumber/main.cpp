@@ -10,8 +10,6 @@
 #include <ctime>
 using namespace std;
 
-//Global Constants
-
 //Function Prototypes
 char rndDgit();
 void prpLuhn(char[],int);
@@ -28,11 +26,11 @@ int main(int argc, char** argv) {
     prpLuhn(crdCard,SIZE-2);
     //Output the preLuhn credit card
     cout<<crdCard<<endl;
-    //Now create a function that fills the last digit
-    //using the Luhn Algorithm
+    //Process Luhn
     cout<<"The random number with Luhn Encoding, Output Here!"<<endl;
     Luhn(crdCard,SIZE-2);
     cout<<crdCard;
+    //Prepare & Output Checking Digit
     chkDgt(crdCard,SIZE-1);
     cout<<"The Credit Card is Valid!!\n";
     
@@ -41,8 +39,7 @@ int main(int argc, char** argv) {
 }
 
 void chkDgt(char cc[],int n){
-    int sum=0;
-    int digit;
+    int digit, sum=0;
     for(int i=0;i<n;i++){
         cc[i];
         sum+=cc[i];
@@ -51,14 +48,13 @@ void chkDgt(char cc[],int n){
     cout<<digit<<endl;
 }
 
-void Luhn(char cc[],int n){ 
-    int sum=0;
+void Luhn(char cc[],int n){
     //Call Credit Card Number
     for(int i=0;i<n;i++){
         cc[i];
         if(i%2==1){
             if(cc[i]<50) cc[i]=(cc[i]*2)%10+42;
-            else if(cc[i]>=50&&cc[i]<=52) cc[i]=(cc[i]*2)%10+52; 
+            else if(cc[i]>=50 && cc[i]<=52) cc[i]=(cc[i]*2)%10+52; 
             else if(cc[i]==53) cc[i]=49;
             else if(cc[i]==54) cc[i]=51;
             else if(cc[i]==55) cc[i]=53;
@@ -66,7 +62,6 @@ void Luhn(char cc[],int n){
             else cc[i]=57;
         }
     }
-    
     //Put null terminator at the end
     for(int i=n;i<=n+1;i++){
         cc[i]='\0';
