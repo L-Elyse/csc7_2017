@@ -12,7 +12,8 @@ using namespace std;
 
 //Function Prototypes
 int CrdCard(int &);
-const int Menupro(int);
+void genCC(int, char[]);
+const int SIZEpro(int);
 char rndDgit();
 void prpLuhn(char[],int);
 void Luhn(char[],int);
@@ -28,24 +29,10 @@ int main(int argc, char** argv) {
     if(choice==5)
         choice=(rand()%(MAX-MIN+1))+MIN;
     //Get Array Size
-    const int SIZE=Menupro(choice);
-    char crdCard[SIZE], LuhnCrd[SIZE];
-    //Prepare for Luhn encoding
-    cout<<"A random number created in Prep for Luhn Digit"<<endl;
-    prpLuhn(crdCard,SIZE-2);
-    //Output the preLuhn credit card
-    cout<<crdCard<<endl;
-    //Process Luhn
-    cout<<"The random number with Luhn Encoding, Output Here!"<<endl;
-    //Reverse Digits in Array
-    for(int i=0;i<SIZE-2;i++){
-        LuhnCrd[i]=crdCard[(SIZE-3)-i];
-    }
-    Luhn(LuhnCrd,SIZE-2);
-    cout<<"Complete Random Number: "<<endl<<crdCard;
-    //Prepare & Output Checking Digit
-    chkDgt(crdCard,SIZE-1);
-    cout<<"The Credit Card is Valid!!\n";
+    const int SIZE=SIZEpro(choice);
+    char LuhnCrd[SIZE];
+    //Test to see if Valid
+    genCC(SIZE,LuhnCrd);
     
     //Exit Stage Right
     return 0;
@@ -96,7 +83,22 @@ char rndDgit(){
     return rand()%10+48;
 }
 
-const int Menupro(int option){
+void genCC(int size, char LuhnCC[]){
+    //Prepare for Luhn encoding
+    char crdCard[size];
+    prpLuhn(crdCard,size-2);
+    //Process Luhn
+    //Reverse Digits in Array
+    for(int i=0;i<size-2;i++){
+        LuhnCC[i]=crdCard[(size-3)-i];
+    }
+    Luhn(LuhnCC,size-2);
+    cout<<"Valid Card Number: "<<endl<<crdCard;
+    //Prepare & Output Checking Digit
+    chkDgt(crdCard,size-1);
+}
+
+const int SIZEpro(int option){
     switch(option){
         case 1:{
             const int MIN=14, MAX=17;
