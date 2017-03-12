@@ -11,24 +11,15 @@
 using namespace std;
 
 //Function Prototypes
-int CrdCard(int &);
-const int Menupro(int);
 char rndDgit();
 void prpLuhn(char[],int);
 void Luhn(char[],int);
 void chkDgt(char[],int);
 
 int main(int argc, char** argv) {
-    //Set the Random Number Seed
+    //Set the random number seed
     srand(static_cast<unsigned int>(time(0)));
-    int choice;
-    const int MIN=1,MAX=4;
-    //Show Menu
-    CrdCard(choice);
-    if(choice==5)
-        choice=(rand()%(MAX-MIN+1))+MIN;
-    //Get Array Size
-    const int SIZE=Menupro(choice);
+    const int SIZE=12;
     char crdCard[SIZE], LuhnCrd[SIZE];
     //Prepare for Luhn encoding
     cout<<"A random number created in Prep for Luhn Digit"<<endl;
@@ -95,48 +86,3 @@ void prpLuhn(char cc[],int n){
 char rndDgit(){
     return rand()%10+48;
 }
-
-const int Menupro(int option){
-    switch(option){
-        case 1:{
-            const int MIN=14, MAX=17;
-            const int SIZE=(rand()%(MAX-MIN+1))+MIN;
-            cout<<"You have chosen Visa."<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
-            return SIZE;
-        }
-        case 2:{
-            const int MIN=17, MAX=20;
-            const int SIZE=(rand()%(MAX-MIN+1))+MIN;
-            cout<<"You have chosen Mastercard"<<endl;
-            return SIZE;
-        }
-        case 3:{
-            const int SIZE=16;
-            cout<<"You have chosen American Express"<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
-            return SIZE;
-        }
-        case 4:{
-            const int SIZE=17;
-            cout<<"You have chosen Discover"<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
-            return SIZE;
-        }
-    }
-}
-
-int CrdCard(int &option){
-    cout<<"Which credit card would you like to choose?"<<endl;
-    cout<<"1. Visa"<<endl;
-    cout<<"2. Mastercard"<<endl;
-    cout<<"3. American Express"<<endl;
-    cout<<"4. Discover"<<endl;
-    cout<<"5. All (Random)"<<endl;
-    cin>>option;
-    while(option<1||option>5){
-        cout<<"Invalid Entry. Please try again.";
-        cin>>option;
-    }
-    return option;
-}    
