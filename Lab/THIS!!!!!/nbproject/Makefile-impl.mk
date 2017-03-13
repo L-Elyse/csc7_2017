@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=GeneratingLuhnNumber_revised
+PROJECTNAME=THIS!!!!!
 
 # Active Configuration
 DEFAULTCONF=Debug

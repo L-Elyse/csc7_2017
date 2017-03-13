@@ -19,7 +19,7 @@ void chkDgt(char[],int);
 int main(int argc, char** argv) {
     //Set the random number seed
     srand(static_cast<unsigned int>(time(0)));
-    const int SIZE=12;
+    const int SIZE=16;
     char crdCard[SIZE], LuhnCrd[SIZE];
     //Prepare for Luhn encoding
     cout<<"A random number created in Prep for Luhn Digit"<<endl;
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
     Luhn(LuhnCrd,SIZE-2);
     cout<<"Complete Random Number: "<<endl<<crdCard;
     //Prepare & Output Checking Digit
-    chkDgt(crdCard,SIZE-1);
+    chkDgt(LuhnCrd,SIZE-2);
     cout<<"The Credit Card is Valid!!\n";
     
     //Exit Stage Right

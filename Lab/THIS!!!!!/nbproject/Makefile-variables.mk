@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=generatingluhnnumber_revised
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/generatingluhnnumber_revised
+CND_ARTIFACT_NAME_Debug=this_____
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/this_____
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=generatingluhnnumberrevised.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/generatingluhnnumberrevised.tar
+CND_PACKAGE_NAME_Debug=this!!!!!.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/this!!!!!.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=generatingluhnnumber_revised
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/generatingluhnnumber_revised
+CND_ARTIFACT_NAME_Release=this_____
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/this_____
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=generatingluhnnumberrevised.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/generatingluhnnumberrevised.tar
+CND_PACKAGE_NAME_Release=this!!!!!.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/this!!!!!.tar
 #
 # include compiler specific variables
 #
