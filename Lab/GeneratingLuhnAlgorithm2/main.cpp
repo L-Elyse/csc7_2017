@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -29,13 +30,15 @@ bool validCC(int[],int);
 
 int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
-    int choice;
+    int choice,nLoops,count=0;
+    bool valid;
     const int MIN=1,MAX=4;
     //Show Menu
     CrdCard(choice);
     if(choice==5)
         choice=(rand()%(MAX-MIN+1))+MIN;
     //Get Array Size & Declare Array
+    do{
     const int SIZE=SIZEpro(choice);
     int crdCard[SIZE];
     //Prepare for Luhn encoding
@@ -43,7 +46,15 @@ int main(int argc, char** argv) {
     //Flip 1 Random Digit
     flipDgt(crdCard,SIZE);
     //See if Card is still Valid
-    cout<<validCC(crdCard,SIZE);
+    valid=validCC(crdCard,SIZE);
+    //Count Valid/Invalid Occurrances
+    if(valid==0){
+        count++;
+    }
+    }while(nLoops<10000);
+    //Collect Stats
+    cout<<fixed<<setprecision(1)<<showpoint;
+    cout<<"Percentage of Invalid Cards: "<<(count/10000)*100.0<<"%"<<endl;
     
     //Exit Stage Right
     return 0;
@@ -52,7 +63,7 @@ int main(int argc, char** argv) {
 bool validCC(int a[],int n){
     int val,sum;
     sum=Luhn(a,n);
-    cout<<sum<<endl;
+//    cout<<sum<<endl;
     sum%10==0?val=1:val=0;
     return val;
 }
@@ -64,8 +75,8 @@ void flipDgt(int a[],int n){
     a[x]=a[x]^a[y];
     a[y]=a[x]^a[y];
     a[x]=a[x]^a[y];
-    cout<<"Swapped: \n";
-    prntAry(a,n-1);
+//    cout<<"Swapped: \n";
+//    prntAry(a,n-1);
     //Put null terminator at the end
     for(int i=n;i<=n+1;i++){
         a[i]='\0';
@@ -156,28 +167,28 @@ void chckDgt(int s,int a[],int n){
     }
 }
 
-void prntAry(int cc[], int size){
-    for(int i = 0; i < size; i++){
-        cout <<cc[i];
-    }
-    cout <<endl;
-    
-}
+//void prntAry(int cc[], int size){
+//    for(int i=0;i<size;i++){
+//        cout<<cc[i];
+//    }
+//    cout <<endl;
+//    
+//}
 
 void genCC(int option,int a[],int n){
     int sum;
-    cout<<"A random number created in Prep for Luhn Digit: "<<endl;
+//    cout<<"A random number created in Prep for Luhn Digit: "<<endl;
     prpLuhn(option,a,n-2);
     //Output the preLuhn credit card
-    prntAry(a,n-2);
+//    prntAry(a,n-2);
     
     //Now create a function that fills the last digit
     //using the Luhn Algorithm
     sum=Luhn(a,n-2);
     chckDgt(sum,a,n-2);
     
-    cout <<"Card number with Luhn Digit: " <<endl;
-    prntAry(a,n-1);
+//    cout <<"Card number with Luhn Digit: " <<endl;
+//    prntAry(a,n-1);
 }
 
 const int SIZEpro(int option){
@@ -185,27 +196,27 @@ const int SIZEpro(int option){
         case 1:{
             const int MIN=14, MAX=17;
             const int SIZE=(rand()%(MAX-MIN+1))+MIN;
-            cout<<"You have chosen Visa."<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"You have chosen Visa."<<endl;
+//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
             return SIZE;
         }
         case 2:{
             const int MIN=17, MAX=20;
             const int SIZE=(rand()%(MAX-MIN+1))+MIN;
-            cout<<"You have chosen Mastercard"<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"You have chosen Mastercard"<<endl;
+//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
             return SIZE;
         }
         case 3:{
             const int SIZE=16;
-            cout<<"You have chosen American Express"<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"You have chosen American Express"<<endl;
+//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
             return SIZE;
         }
         case 4:{
             const int SIZE=17;
-            cout<<"You have chosen Discover"<<endl;
-            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"You have chosen Discover"<<endl;
+//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
             return SIZE;
         }
     }
