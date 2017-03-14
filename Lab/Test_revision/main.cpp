@@ -28,7 +28,6 @@ int main(int argc, char** argv) {
     cout<<"A random number created in Prep for Luhn Digit: "<<endl;
     prpLuhn(crdCard,SIZE-2);
     //Output the preLuhn credit card
-    //cout<<crdCard<<endl;
     outAry(crdCard, SIZE-2);
     
     //Now create a function that fills the last digit
@@ -66,7 +65,6 @@ void Luhn(int cc[], int n){
             if(i%2 != 0){
                 //Double the value
                 int temp = cc[i]*2;
-                //cout <<"Doubled: " <<cc[i] <<" to " <<temp <<endl;
 
                 //Find the digits
                 int d1 = temp%10;
@@ -74,7 +72,6 @@ void Luhn(int cc[], int n){
 
                 //Sum the digits
                 cardNum[i] = d1+d2;
-                //cout <<"Digit sum: " <<cardNum[i] <<endl;
             }
             else{
                 //Copy card contents
