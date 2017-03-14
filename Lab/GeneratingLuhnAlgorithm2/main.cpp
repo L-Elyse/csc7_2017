@@ -18,7 +18,7 @@ using namespace std;
 
 //Function Prototypes
 int CrdCard(int &);
-const int SIZEpro(int);
+int SIZEpro(int);
 void genCC(int,int[],int);
 char rndDgit();
 void prpLuhn(int,int[],int);
@@ -30,16 +30,17 @@ bool validCC(int[],int);
 
 int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
-    int choice,nLoops,count=0;
-    bool valid;
-    const int MIN=1,MAX=4;
+    int choice,nLoops=0,count=0;
+    
     //Show Menu
     CrdCard(choice);
+    do{
+    bool valid;
+    const int MIN=1,MAX=4;
     if(choice==5)
         choice=(rand()%(MAX-MIN+1))+MIN;
     //Get Array Size & Declare Array
-    do{
-    const int SIZE=SIZEpro(choice);
+    int SIZE=SIZEpro(choice);
     int crdCard[SIZE];
     //Prepare for Luhn encoding
     genCC(choice,crdCard,SIZE);
@@ -48,13 +49,14 @@ int main(int argc, char** argv) {
     //See if Card is still Valid
     valid=validCC(crdCard,SIZE);
     //Count Valid/Invalid Occurrances
-    if(valid==0){
+    if(valid==false){
         count++;
     }
+    nLoops++;
     }while(nLoops<10000);
     //Collect Stats
     cout<<fixed<<setprecision(1)<<showpoint;
-    cout<<"Percentage of Invalid Cards: "<<(count/10000)*100.0<<"%"<<endl;
+    cout<<"Percentage of Invalid Cards: "<<count<<"%"<<endl;
     
     //Exit Stage Right
     return 0;
@@ -63,8 +65,8 @@ int main(int argc, char** argv) {
 bool validCC(int a[],int n){
     int val,sum;
     sum=Luhn(a,n);
-//    cout<<sum<<endl;
-    sum%10==0?val=1:val=0;
+    cout<<sum<<endl;
+    sum%10==0?val=true:val=false;
     return val;
 }
 
@@ -76,7 +78,7 @@ void flipDgt(int a[],int n){
     a[y]=a[x]^a[y];
     a[x]=a[x]^a[y];
 //    cout<<"Swapped: \n";
-//    prntAry(a,n-1);
+    prntAry(a,n-1);
     //Put null terminator at the end
     for(int i=n;i<=n+1;i++){
         a[i]='\0';
@@ -167,20 +169,20 @@ void chckDgt(int s,int a[],int n){
     }
 }
 
-//void prntAry(int cc[], int size){
-//    for(int i=0;i<size;i++){
-//        cout<<cc[i];
-//    }
+void prntAry(int cc[], int size){
+    for(int i=0;i<size;i++){
+        cc[i];
+    }
 //    cout <<endl;
-//    
-//}
+    
+}
 
 void genCC(int option,int a[],int n){
     int sum;
 //    cout<<"A random number created in Prep for Luhn Digit: "<<endl;
     prpLuhn(option,a,n-2);
     //Output the preLuhn credit card
-//    prntAry(a,n-2);
+    prntAry(a,n-2);
     
     //Now create a function that fills the last digit
     //using the Luhn Algorithm
@@ -188,10 +190,10 @@ void genCC(int option,int a[],int n){
     chckDgt(sum,a,n-2);
     
 //    cout <<"Card number with Luhn Digit: " <<endl;
-//    prntAry(a,n-1);
+    prntAry(a,n-1);
 }
 
-const int SIZEpro(int option){
+int SIZEpro(int option){
     switch(option){
         case 1:{
             const int MIN=14, MAX=17;
