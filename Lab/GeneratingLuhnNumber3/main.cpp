@@ -82,7 +82,7 @@ bool validCC(int a[],int n){
 }
 
 void trnspse(int a[],int n){
-    int MIN=0,MAX=n-3;
+    int MIN=0,MAX=n-2;
     
     //Transpose Digits
     for(int i=0;i<2;i++){
@@ -93,12 +93,12 @@ void trnspse(int a[],int n){
         a[y]=a[x]^a[y];
         a[x]=a[x]^a[y];
 //        cout<<"Transposed: \n";
-        prntAry(a,n-1);
+        prntAry(a,n);
     }
 }
 
 void flipDgt(int a[],int n){
-    int MIN=0,MAX=n-2;
+    int MIN=0,MAX=n-1;
     
     //Perform Swap
     for(int i=0;i<2;i++){
@@ -112,12 +112,7 @@ void flipDgt(int a[],int n){
         a[y]=a[x]^a[y];
         a[x]=a[x]^a[y];
 //        cout<<"Swapped: \n";
-        prntAry(a,n-1);
-    }
-    
-    //Put null terminator at the end
-    for(int i=n;i<=n+1;i++){
-        a[i]='\0';
+        prntAry(a,n);
     }
 }
 
@@ -147,10 +142,6 @@ void prpLuhn(int type,int cc[],int n){
     //Create a random cc in prep for Luhn checksum
     for(int i=start;i<n;i++){
         cc[i]=rndDgit();
-    }
-    //Put null terminator at the end
-    for(int i=n;i<=n+1;i++){
-        cc[i]='\0';
     }
 }
 
@@ -216,45 +207,45 @@ void prntAry(int cc[], int size){
 void genCC(int option,int a[],int n){
     int sum;
 //    cout<<"A random number created in Prep for Luhn Digit: "<<endl;
-    prpLuhn(option,a,n-2);
+    prpLuhn(option,a,n-1);
     //Output the preLuhn credit card
-    prntAry(a,n-2);
+    prntAry(a,n-1);
     
     //Now create a function that fills the last digit
     //using the Luhn Algorithm
-    sum=Luhn(a,n-2);
-    chckDgt(sum,a,n-2);
+    sum=Luhn(a,n-1);
+    chckDgt(sum,a,n-1);
     
 //    cout <<"Card number with Luhn Digit: " <<endl;
-    prntAry(a,n-1);
+    prntAry(a,n);
 }
 
 int SIZEpro(int option){
     switch(option){
         case 1:{
-            const int MIN=14, MAX=17;
+            const int MIN=13, MAX=16;
             int SIZE=(rand()%(MAX-MIN+1))+MIN;
 //            cout<<"You have chosen Visa."<<endl;
-//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"This card has "<<SIZE<<" digits"<<endl;
             return SIZE;
         }
         case 2:{
-            const int MIN=17, MAX=20;
+            const int MIN=16, MAX=19;
             const int SIZE=(rand()%(MAX-MIN+1))+MIN;
 //            cout<<"You have chosen Mastercard"<<endl;
-//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"This card has "<<SIZE<<" digits"<<endl;
             return SIZE;
         }
         case 3:{
-            const int SIZE=16;
+            const int SIZE=15;
 //            cout<<"You have chosen American Express"<<endl;
-//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"This card has "<<SIZE<<" digits"<<endl;
             return SIZE;
         }
         case 4:{
-            const int SIZE=17;
+            const int SIZE=16;
 //            cout<<"You have chosen Discover"<<endl;
-//            cout<<"This card has "<<SIZE-1<<" digits"<<endl;
+//            cout<<"This card has "<<SIZE<<" digits"<<endl;
             return SIZE;
         }
     }
