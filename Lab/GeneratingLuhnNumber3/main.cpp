@@ -2,7 +2,8 @@
  * File:   main.cpp
  * Author: Laurie Guimont
  * Created on March 18, 2017, 6:00 PM
- * Purpose: Collect Stats on Valid/Invalid Credit Cards
+ * Purpose: Collect Stats on Valid/Invalid Credit Cards w/ Transpositions and
+ *                  Flips
  */
 
 //System Libraries
