@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Laurie Guimont
  * Created on April 3, 2017, 3:00 PM
- * Purpose:  Using General Hashing Funcions
+ * Purpose:  Using General Hashing Functions
  */
 
 //System Libraries Here
@@ -20,24 +20,20 @@ using namespace std;
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
-    //Declare all Variables Here
-    const std::string key="Then out spake brave Horatius,"
-                          "The Captain of the Gate:"
-                          "To every man upon this earth"
-                          "Death cometh soon or late."
-                          "And how can man die better"
-                          "Than facing fearful odds,"
-                          "For the ashes of his fathers,"
-                          "And the temples of his gods.";
+    //Declare String Literal
+    const std::string key="Then out spake brave Horatius,\n"
+                     "     The Captain of the Gate:\n"
+                     "     To every man upon this earth\n"
+                     "     Death cometh soon or late.\n"
+                     "     And how can man die better\n"
+                     "     Than facing fearful odds,\n"
+                     "     For the ashes of his fathers,\n"
+                     "     And the temples of his gods.\n";
     
-    //Input or initialize values Here
-    
-    //Process/Calculations Here
-    
-    //Output Located Here
+    //Output Hash Values
     std::cout<<"General Purpose Hash Function Algorithm"<<std::endl;
     std::cout<<"--------------------------------------"<<std::endl;
-    std::cout<<" Key: "<<key<<std::endl;
+    std::cout<<"Key: "<<key<<std::endl;
     std::cout<<  " 1. RS-Hash Function Value:   "<<RSHash(key)<<std::endl;
     std::cout << " 2. JS-Hash Function Value:   " << JSHash  (key) << std::endl;
     std::cout << " 3. PJW-Hash Function Value:  " << PJWHash (key) << std::endl;
@@ -53,4 +49,3 @@ int main(int argc, char** argv) {
     //Exit
     return 0;
 }
-
