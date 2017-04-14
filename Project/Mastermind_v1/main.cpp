@@ -21,8 +21,8 @@ int main(int argc, char** argv) {
     
     //Declare Variables
     const int SIZE=4;
-    int array[SIZE];
-    int brray[SIZE];
+    int array[SIZE];         //Array of the Code
+    int brray[SIZE];         //Array of the Guess
     int black=0,white=0,count=0;
     int guess;
     
