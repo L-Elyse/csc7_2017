@@ -14,8 +14,10 @@ using namespace std;
 //Function Prototypes
 int *fillAry(int *,const int);
 int *guesAry(int *,int,const int);
-int compare(int *,int *,const int);
+int compare(int *,int *,int);
 void *prntAry(int *,const int);
+int search(int *,int *,const int,int);
+bool check(int *,int *,int,int);
 
 //Execution Begins Here!
 int main(int argc, char** argv) {
@@ -52,6 +54,31 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+bool check(int *a,int *b,int temp,int i){
+    int index=0;
+    bool found=false;
+    while(index<=i&&!found){
+        if(b[temp]==a[index])
+            found=true;
+        index++;
+    }
+    return found;
+}
+
+int search(int *a,int *b,const int n,int i){  //linear search
+    int index=0;
+    int position=-1;
+    bool found=false;
+    while(index<n&&!found){
+        if(b[i]==b[index]){
+            found=true;
+            position=index;
+        }
+        index++;
+    }
+    return position;
+} 
+
 void *prntAry(int *a,const int n){
     for(int i=0;i<n;i++)
         cout<<*(a+i)<<" ";
@@ -59,18 +86,7 @@ void *prntAry(int *a,const int n){
 
 int compare(int *a,int *b,const int n){
     int black=0,white=0;
-    int counts=0,k=0;
-    int cntAry[n];
-    
-    for(int i=0;i<n-1;i++){
-        for(int j=i+1;j<n;j++){
-            if(a[i]==a[j]){
-                count++;
-            }
-        }cntAry[k]=count;
-        k++;
-        count=0;
-    }
+    int count=0;
     
     for(int i=0;i<n;i++){
         if(b[i]==a[i])
@@ -78,15 +94,19 @@ int compare(int *a,int *b,const int n){
         else if(b[i]!=a[i]){
             for(int j=0;j<n;j++){
                 if(b[i]==a[j]){
-                    if(b[i]!=a[i]&&cntAry&&counts<1){
-                        white++;
-                        counts++;
+                    if(count<1){
+                        int temp=search(a,b,n,i);
+                        bool shemp=true;
+                        shemp=check(a,b,temp,i);
+                        if(temp<0&&shemp!=true)
+                            white++;
                     }
-                }      
-            }
+                }
+            }                                
         }
-        counts=0;
+        count=0;
     }
+    
     cout<<"Black: "<<black<<endl;
     cout<<"White: "<<white<<endl;
 }
